@@ -1,7 +1,7 @@
 class Vacancy:
     """Класс для работы с вакансиями"""
-    def __init__(self, title, url, salary, description):
-        self.title = title
+    def __init__(self, name, url, salary, description):
+        self.name = name
         self.url = url.strip("<>()[]{}")
         if "-" in salary:
             self.salary = int(salary.replace(" ", "").split("-")[0])
