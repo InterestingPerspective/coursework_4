@@ -1,16 +1,30 @@
 class Vacancy:
     """Класс для работы с вакансиями"""
-    def __init__(self, name, url, salary, description):
-        self.name = name
-        self.url = url.strip("<>()[]{}")
-        if "-" in salary:
-            self.salary = int(salary.replace(" ", "").split("-")[0])
+    def __init__(self, vacancy):
+        if len(vacancy) == 34:
+            self.name = vacancy["name"]
+            self.url = vacancy["alternate_url"]
+            self.salary_from = vacancy["salary"]["from"]
+            self.salary_to = vacancy["salary"]["to"]
+            self.currency = vacancy["salary"]["currency"]
+            self.description = vacancy["snippet"]["requirement"]
         else:
-            self.salary = int(salary.replace(" ", "").strip("руб.eurEURsdUSDРУБ"))
-        self.description = description
+            self.name = vacancy["profession"]
+            self.url = vacancy["link"]
+            self.salary_from = vacancy["payment_from"]
+            self.salary_to = vacancy["payment_to"]
+            self.currency = vacancy["currency"]
+            self.description = vacancy["candidat"]
+
+    def __str__(self):
+        return f"""
+Вакансия: {self.name}
+Ссылка: {self.url}
+Зарплата: {self.salary_from} {self.currency}
+Описание: {self.description}"""
 
     def __ge__(self, other):
-        return self.salary >= other.salary
+        return self.salary_from >= other.salary_from
 
     def __le__(self, other):
-        return self.salary <= other.salary
+        return self.salary_from <= other.salary_from
