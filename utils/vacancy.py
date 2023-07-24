@@ -4,9 +4,14 @@ class Vacancy:
         if len(vacancy) == 34:
             self.name = vacancy["name"]
             self.url = vacancy["alternate_url"]
-            self.salary_from = vacancy["salary"]["from"]
-            self.salary_to = vacancy["salary"]["to"]
-            self.currency = vacancy["salary"]["currency"]
+            if vacancy["salary"] is None:
+                self.salary_from = None
+                self.salary_to = None
+                self.currency = None
+            else:
+                self.salary_from = vacancy["salary"]["from"]
+                self.salary_to = vacancy["salary"]["to"]
+                self.currency = vacancy["salary"]["currency"]
             self.description = vacancy["snippet"]["requirement"]
         else:
             self.name = vacancy["profession"]
