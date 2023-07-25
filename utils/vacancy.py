@@ -1,3 +1,13 @@
+def format_vacancies(vacancies):
+    formatted_vacancies = []
+
+    for vacancy in vacancies:
+        formatted_vacancy = Vacancy(vacancy)
+        formatted_vacancies.append(formatted_vacancy)
+
+    return formatted_vacancies
+
+
 class Vacancy:
     """Класс для работы с вакансиями"""
     def __init__(self, vacancy):
