@@ -6,7 +6,7 @@ import requests
 class ApiClient(ABC):
     """Класс для получения вакансий с помощью API"""
     @abstractmethod
-    def get_vacancies(self, vacancy):
+    def get_vacancies(self, vacancy, page=None):
         pass
 
 
