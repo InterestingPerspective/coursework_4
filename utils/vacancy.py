@@ -42,10 +42,11 @@ def filter_vacancies(hh_or_sj_vacancies, filter_words):
     filtered_vacancies = []
 
     for vacancy in hh_or_sj_vacancies:
-        for word in filter_words:
-            if word.lower() in vacancy.description.lower():
-                filtered_vacancies.append(vacancy)
-                break
+        if isinstance(vacancy.description, str):
+            for word in filter_words:
+                if word.lower() in vacancy.description.lower():
+                    filtered_vacancies.append(vacancy)
+                    break
 
     return filtered_vacancies
 
