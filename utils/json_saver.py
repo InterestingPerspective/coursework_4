@@ -48,7 +48,7 @@ class JSONSaver(WorkWithVacancies):
         with open(self.SAVER_FILE, encoding="utf-8") as f:
             current_data = json.load(f)
         for data in current_data:
-            if salary_from <= data["salary_from"] <= salary_to and data["currency"] in currencies:
+            if int(salary_from) <= data["salary_from"] <= int(salary_to) and data["currency"] in currencies:
                 suitable_vacancies.append(data)
 
         return suitable_vacancies

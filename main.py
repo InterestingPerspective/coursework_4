@@ -1,3 +1,4 @@
+from pprint import pprint
 from utils.API_Classes import HeadHunterAPI, SuperJobAPI
 from utils.json_saver import JSONSaver
 from utils.vacancy import format_vacancies, filter_vacancies, sort_vacancies, get_top_vacancies, print_vacancies
@@ -57,7 +58,7 @@ def user_interaction():
         if user_answer_2 == "y":
             salary_from, salary_to = input("Введите через пробел мин. и макс. зарплаты: ").split()
             for vac in json_saver.get_vacancies_by_salary(salary_from, salary_to):
-                print(vac)
+                pprint(vac)
         else:
             break
 
